@@ -173,5 +173,15 @@ Output:
 - output_files/mmcif_summary.json
 
 
+## Access Docker Image:
+
+To access Docker Image:
+
+
+code: 
+
+'docker pull prathamppatel/homework06:1.0'
+
+
 
 
