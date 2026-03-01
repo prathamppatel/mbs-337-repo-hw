@@ -37,3 +37,18 @@ This function manages the database and file output. It iterates through the reco
 The main execution function that sets the configuration for the script. It defines the output file path, coordinates the flow of data between functions, and handles command-line arguments for different logging levels.
 
 ---
+
+## Running the Redis Container
+
+This assignment uses Docker Compose to manage the Redis database.
+
+1. **Start the Database:**
+   'docker compose up -d'
+
+2. **Verify it is Running:**
+   'docker ps'
+
+3. **Stop the Database:**
+   'docker compose down'
+
+   

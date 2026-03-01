@@ -13,6 +13,14 @@ parser.add_argument('-l', '--loglevel',
                     required=False,
                     default='WARNING',
                     help='set log level to DEBUG, INFO, WARNING, ERROR, or CRITICAL')
+parser.add_argument('-o', '--output',
+                    type=str,
+                    default='genbank_records.txt',
+                    help='Name of the output text file')
+parser.add_argument('-s', '--search',
+                    type=str,
+                    default='Arabidopsis thaliana AND AT5G10140',
+                    help='NCBI search term')
 args = parser.parse_args()
 
 format_str = (
@@ -21,7 +29,7 @@ format_str = (
 )
 logging.basicConfig(level=args.loglevel, format=format_str)
 
-def get_records() -> tuple[list, list]:
+def get_records(search_term: str) -> tuple[list, list]:
     """
     Searches the NCBI Protein database and fetches full GenBank records.
     
@@ -37,7 +45,7 @@ def get_records() -> tuple[list, list]:
     
     try:
         logging.info("Searching NCBI Protein database for Arabidopsis thaliana AT5G10140.")       
-        with Entrez.esearch(db="protein", term="Arabidopsis thaliana AND AT5G10140", retmax=30) as h:
+        with Entrez.esearch(db="protein", term=search_term, retmax=30) as h:
             results = Entrez.read(h)
             id_list = results.get("IdList", [])
     
@@ -89,9 +97,8 @@ def store_and_write_records(id_list: list, records: list, output_file: str) -> N
 
 
 def main():
-    output_file = "genbank_records.txt"
-    records, id_list = get_records()
-    store_and_write_records(id_list, records, output_file)
+    records, id_list = get_records(args.search)
+    store_and_write_records(id_list, records, args.output)
 
 if __name__ == "__main__":
     main()
