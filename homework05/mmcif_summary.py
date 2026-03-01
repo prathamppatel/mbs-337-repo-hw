@@ -25,13 +25,14 @@ logging.basicConfig(level=args.loglevel, format=format_str)
 
 def parse_mmcif_file(mmcif_file: str) -> object: 
     """
-    Reads an mmCIF file and returns the parsed structure.
+    Reads a FASTA file and writes sequence statistics to a text file.
 
     Args:
-        mmcif_file (str): Path to the mmCIF file.
+        filename (str): Path to the input FASTA file.
+        output_file (str): Path to the output stats text file.
 
     Returns:
-        Structure object from MMCIFParser if successful.
+        None
     """
     parser = MMCIFParser()
     try:
