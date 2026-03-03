@@ -34,7 +34,7 @@ def get_records(search_term: str) -> tuple[list, list]:
     Searches the NCBI Protein database and fetches full GenBank records.
     
     Args:
-        None.
+        search_term: A string representing the NCBI protein search query.
         
     Returns:
         records: A list of BioPython SeqRecord objects.
