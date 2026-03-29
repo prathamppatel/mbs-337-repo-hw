@@ -36,6 +36,6 @@ jobs:
         with:
           context: homework08
           push: true
-          file: ./Dockerfile
+          file: ./homework08/Dockerfile
           tags: ${{ steps.meta-data.outputs.tags }}
           labels: ${{ steps.meta-data.outputs.labels }}
